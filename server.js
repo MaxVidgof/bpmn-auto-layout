@@ -1,5 +1,5 @@
 const express = require('express');
-const { layoutProcess } = require('./bpmn-auto-layout');
+const { layoutProcess } = require('bpmn-auto-layout');
 //import { layoutProcess } from './node_modules/bpmn-auto-layout/dist/index.esm.js';
 //import { layoutProcess } from 'bpmn-auto-layout';
 const { convertAll } = require('bpmn-to-image');
@@ -15,12 +15,12 @@ app.post('/process-diagram', async (req, res) => {
         const diagramXML = req.body;
         const layoutedDiagramXML = await layoutProcess(diagramXML);
 
-        //fs.writeFileSync('/tmp/diagram.bpmn', layoutedDiagramXML);
-        //await convertAll([{ input: '/tmp/diagram.bpmn', outputs: ['/tmp/diagram.svg'] }]);
-        //const svg = fs.readFileSync('/tmp/diagram.svg', 'utf-8');
+        fs.writeFileSync('/tmp/diagram.bpmn', layoutedDiagramXML);
+        await convertAll([{ input: '/tmp/diagram.bpmn', outputs: ['/tmp/diagram.svg'] }]);
+        const svg = fs.readFileSync('/tmp/diagram.svg', 'utf-8');
 
-        res.send(layoutedDiagramXML);
-        //res.json({ layoutedDiagramXML, svg });  // Send both the XML and SVG as a JSON response
+        //res.send(layoutedDiagramXML);
+        res.json({ layoutedDiagramXML, svg });  // Send both the XML and SVG as a JSON response
     } catch (error) {
         console.error('Error processing diagram XML:', error);
         res.status(500).send('Internal Server Error');

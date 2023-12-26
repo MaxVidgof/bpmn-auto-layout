@@ -1,7 +1,12 @@
 {
-  "type": "module",
   "dependencies": {
     "express": "^4.17.1",
-    "body-parser": "^1.19.0"
+    "body-parser": "^1.19.0",
+    "puppeteer": "^21.0.0",
+    "bpmn-auto-layout": ">=0.4.0",
+    "bpmn-to-image": "git://github.com/MaxVidgof/bpmn-to-image.git#master"
+  },
+  "overrides": {
+    "puppeteer": "^21.0.0"
   }
 }

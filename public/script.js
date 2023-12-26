@@ -1,5 +1,5 @@
 document.getElementById('generateButton').addEventListener('click', async () => {
-    //var bpmnJS = new BpmnJS({container: '#canvas'});
+    var bpmnJS = new BpmnJS({container: '#canvas'});
 
     const diagramXML = document.getElementById('inputArea').value;
     try {
@@ -10,11 +10,12 @@ document.getElementById('generateButton').addEventListener('click', async () => 
             },
             body: diagramXML,
         });
-        const layoutedDiagramXML = await response.text();
+        //const layoutedDiagramXML = await response.text();
+        const { layoutedDiagramXML, svg } = await response.json();
         document.getElementById('outputArea').value = layoutedDiagramXML;
         //document.getElementById('outputArea').value = layoutedDiagramXML;
-        //document.getElementById('canvas').innerHTML = svg;
-        //await bpmnJS.importXML(someDiagram);
+        document.getElementById('canvas').innerHTML = svg;
+        await bpmnJS.importXML(someDiagram);
     } catch (error) {
         console.error('Error:', error);
     }
