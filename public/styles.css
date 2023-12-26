@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    color: white;
+    background-color: green;
+    border: none;
+    cursor: pointer;
+}
+
+#icon-placeholder {
+    /* styling for icon placeholder */
+}
+
