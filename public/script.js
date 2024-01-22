@@ -15,7 +15,7 @@ document.getElementById('generateButton').addEventListener('click', async () => 
         document.getElementById('outputArea').value = layoutedDiagramXML;
         //document.getElementById('outputArea').value = layoutedDiagramXML;
         document.getElementById('canvas').innerHTML = svg;
-        await bpmnJS.importXML(someDiagram);
+        await bpmnJS.importXML(layoutedDiagramXML); //someDiagram);
     } catch (error) {
         console.error('Error:', error);
     }
